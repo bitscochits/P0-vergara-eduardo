@@ -1,0 +1,15 @@
+{
+  "sistema_operativo": "Microsoft Windows 11 Pro",
+  "arquitectura": "AMD64",
+  "version_python": "3.10.11",
+  "version_numpy": "2.2.6",
+  "modelo_procesador": "Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz",
+  "nucleos_fisicos": "4",
+  "procesadores_logicos": "8",
+  "ram_total_gb": 15.78,
+  "ram_disponible_gb": 5.7,
+  "modelo_gpu": "Intel(R) Iris(R) Plus Graphics; NVIDIA GeForce GTX 1050 with Max-Q Design",
+  "disco_principal": "C:\\",
+  "disco_total_gb": 475.73,
+  "disco_libre_gb": 156.54
+}
