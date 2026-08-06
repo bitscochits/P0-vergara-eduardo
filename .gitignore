@@ -1,0 +1,14 @@
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Archivos de edición
+*.swp
+.idea/
+.vscode/
