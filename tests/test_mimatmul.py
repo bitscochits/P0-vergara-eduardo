@@ -42,3 +42,11 @@ def test_dimensiones_incompatibles():
     B = np.ones((4, 2))
     with pytest.raises(ValueError, match="incompatibles"):
         mimatmul(A, B)
+
+
+def test_multiplicacion_por_identidad():
+    rng = np.random.default_rng(11)
+    A = rng.random((4, 4))
+    I = np.eye(4)
+    assert np.allclose(mimatmul(A, I), A)
+    assert np.allclose(mimatmul(I, A), A)
