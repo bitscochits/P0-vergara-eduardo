@@ -70,8 +70,8 @@ Comportamiento observado:
 - `mimatmul` crece aproximadamente como `n^3`: de ~0.0005 s en `n=10` a ~4.2 s en `n=200`.
 - NumPy es casi insensible al tamano en este rango (~0.0005 s en `n=200`), unas
   ~8000 veces mas rapido en el tamano mayor.
-- Las repeticiones del mismo caso no son identicas (p. ej. `mimatmul` en `n=200`
-  vario entre ~4.2 y ~6.4 s) porque el tiempo depende de la planificacion del
+- Las repeticiones del mismo caso no son identicas (p. ej. `mimatmul` en `n=125`
+  vario entre ~0.95 y ~1.11 s) porque el tiempo depende de la planificacion del
   sistema operativo, el turbo del procesador y la actividad de fondo.
 
 ### Observacion de recursos
