@@ -43,5 +43,6 @@ P0-vergara-eduardo/
   (equipo con 16 GB de RAM; mimatmul escala como n^3 y se vuelve muy lento).
 - Prohibido ejecutar operaciones destructivas de Git (force push, reset, rebase,
   borrado de historial).
+- Prohibido subir al repositorio credenciales, claves de API, contrasenas o llaves SSH.
 - El estudiante debe revisar todos los cambios antes de cualquier commit o push;
   no commitear sin su aprobacion explicita.
