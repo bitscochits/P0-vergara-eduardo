@@ -46,8 +46,12 @@ def nvidia_gpu():
         return None
 
 
-def correr_fase(descripcion, carga, segundos):
-    """Corre `carga` en un hilo y muestrea CPU, RAM y GPU hasta que pase `segundos`."""
+def correr_fase(descripcion, carga, segundos, offset=0.0):
+    """Corre `carga` en un hilo y muestrea CPU, RAM y GPU hasta que pase `segundos`.
+
+    `offset` suma un desplazamiento de tiempo para que las fases no se superpongan
+    en el eje horizontal del grafico.
+    """
     hilo = threading.Thread(target=carga, daemon=True)
     hilo.start()
     inicio = time.time()
@@ -56,7 +60,7 @@ def correr_fase(descripcion, carga, segundos):
         por_nucleo = psutil.cpu_percent(interval=INTERVALO, percpu=True)
         gpu = nvidia_gpu()
         filas.append({
-            "tiempo_s": round(time.time() - inicio, 2),
+            "tiempo_s": round(offset + (time.time() - inicio), 2),
             "fase": descripcion,
             "cpu_promedio": round(sum(por_nucleo) / len(por_nucleo), 1),
             "cpu_por_nucleo": [round(p) for p in por_nucleo],
@@ -129,8 +133,10 @@ def main():
     psutil.cpu_percent(interval=0.3)
 
     filas = []
-    filas += correr_fase("mimatmul", lambda: [mimatmul(A, B) for _ in range(10)], DURACION_MIMATMUL)
-    filas += correr_fase("numpy", lambda: [A2 @ B2 for _ in range(40)], DURACION_NUMPY)
+    offset = 0.0
+    filas += correr_fase("mimatmul", lambda: [mimatmul(A, B) for _ in range(10)], DURACION_MIMATMUL, offset)
+    offset += DURACION_MIMATMUL
+    filas += correr_fase("numpy", lambda: [A2 @ B2 for _ in range(40)], DURACION_NUMPY, offset)
 
     guardar_csv(filas)
     generar_grafico(filas)
