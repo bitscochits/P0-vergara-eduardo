@@ -5,13 +5,15 @@ Proyecto P0 del curso "Metodos computacionales en obras civiles" (Universidad de
 ## Descripcion
 
 El proyecto prepara un ambiente de trabajo reproducible para el curso y presenta
-un desarrollo incremental en cuatro partes:
+un desarrollo incremental en cinco partes:
 
 1. `src/system_info.py` recolecta las caracteristicas principales del computador.
 2. `src/mimatmul.py` implementa la multiplicacion de matrices con ciclos explicitos de Python.
 3. `tests/test_mimatmul.py` verifica automaticamente la funcion con `pytest`.
 4. `src/benchmark.py` compara el tiempo de `mimatmul` contra la operacion optimizada `A @ B` de NumPy
    y guarda los resultados en `data/benchmark_results.csv` y `figures/benchmark.png`.
+5. `src/monitor_recursos.py` observa el uso de CPU, RAM y GPU durante una corrida representativa
+   y guarda `data/recursos.csv` y `figures/recursos.png`.
 
 Todo el codigo fue producido con el agente de programacion OpenCode y revisado por el estudiante.
 
@@ -41,6 +43,9 @@ python -m pytest
 
 # Benchmark (genera data/benchmark_results.csv y figures/benchmark.png)
 python src/benchmark.py
+
+# Observacion de recursos (genera data/recursos.csv y figures/recursos.png)
+python src/monitor_recursos.py
 ```
 
 ## Computador
@@ -121,12 +126,15 @@ P0-vergara-eduardo/
 ├── src/
 │   ├── system_info.py
 │   ├── mimatmul.py
-│   └── benchmark.py
+│   ├── benchmark.py
+│   └── monitor_recursos.py
 ├── tests/
 │   └── test_mimatmul.py
 ├── data/
 │   ├── system_info.json
-│   └── benchmark_results.csv
+│   ├── benchmark_results.csv
+│   └── recursos.csv
 └── figures/
-    └── benchmark.png
+    ├── benchmark.png
+    └── recursos.png
 ```

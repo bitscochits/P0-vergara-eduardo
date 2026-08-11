@@ -18,16 +18,19 @@ P0-vergara-eduardo/
 ├── requirements.txt
 ├── conftest.py          # permite importar modulos de src/ en las pruebas
 ├── src/
-│   ├── system_info.py   # informacion del computador -> data/system_info.json
-│   ├── mimatmul.py      # multiplicacion de matrices con ciclos de Python
-│   └── benchmark.py     # benchmark -> data/benchmark_results.csv y figures/benchmark.png
+│   ├── system_info.py      # informacion del computador -> data/system_info.json
+│   ├── mimatmul.py         # multiplicacion de matrices con ciclos de Python
+│   ├── benchmark.py        # benchmark -> data/benchmark_results.csv y figures/benchmark.png
+│   └── monitor_recursos.py # observacion CPU/RAM/GPU -> data/recursos.csv y figures/recursos.png
 ├── tests/
-│   └── test_mimatmul.py # pruebas de pytest
+│   └── test_mimatmul.py    # pruebas de pytest
 ├── data/
 │   ├── system_info.json
-│   └── benchmark_results.csv
+│   ├── benchmark_results.csv
+│   └── recursos.csv
 └── figures/
-    └── benchmark.png
+    ├── benchmark.png
+    └── recursos.png
 ```
 
 ## Reglas de trabajo
