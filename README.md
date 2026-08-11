@@ -62,14 +62,15 @@ Caracteristicas registradas en `data/system_info.json` (equipo evaluado, 2026-08
 ![Benchmark mimatmul vs NumPy](figures/benchmark.png)
 
 El grafico muestra el tiempo medio por repeticion (escala log-log) para matrices
-cuadradas de `n = 10` a `n = 200`. Se miden 3 repeticiones por tamano, precedidas
+cuadradas de `n = 10` a `n = 400`. Se miden 3 repeticiones por tamano, precedidas
 de una llamada de calentamiento.
 
 Comportamiento observado:
 
-- `mimatmul` crece aproximadamente como `n^3`: de ~0.0005 s en `n=10` a ~4.2 s en `n=200`.
-- NumPy es casi insensible al tamano en este rango (~0.0005 s en `n=200`), unas
-  ~8000 veces mas rapido en el tamano mayor.
+- `mimatmul` crece aproximadamente como `n^3`: de ~0.0005 s en `n=10` a ~35 s en `n=400`
+  (al duplicar de 200 a 400, el tiempo se multiplica por ~8).
+- NumPy es mucho mas rapido en todo el rango: ~0.002 s en `n=400`, unas
+  ~17000 veces mas rapido en el tamano mayor.
 - Las repeticiones del mismo caso no son identicas (p. ej. `mimatmul` en `n=125`
   vario entre ~0.95 y ~1.11 s) porque el tiempo depende de la planificacion del
   sistema operativo, el turbo del procesador y la actividad de fondo.

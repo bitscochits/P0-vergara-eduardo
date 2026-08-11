@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent.parent
 DATA_DIR = HERE / "data"
 FIGURES_DIR = HERE / "figures"
 
-SIZES = [10, 25, 50, 75, 100, 125, 150, 200]
+SIZES = [10, 25, 50, 75, 100, 125, 150, 200, 400]
 REPETICIONES = 3
 TIPO_DATO = np.float64
 
