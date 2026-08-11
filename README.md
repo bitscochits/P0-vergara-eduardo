@@ -22,13 +22,17 @@ Todo el codigo fue producido con el agente de programacion OpenCode y revisado p
 Requisitos: Python 3.10, Git y una terminal (PowerShell en Windows).
 
 ```powershell
-# 1. Crear el ambiente virtual
+# 1. Clonar o descargar el repositorio
+git clone https://github.com/bitscochits/P0-vergara-eduardo.git
+cd P0-vergara-eduardo
+
+# 2. Crear el ambiente virtual
 python -m venv .venv
 
-# 2. Activarlo
+# 3. Activarlo
 .venv\Scripts\activate
 
-# 3. Instalar las dependencias
+# 4. Instalar las dependencias
 pip install -r requirements.txt
 ```
 
@@ -72,12 +76,12 @@ de una llamada de calentamiento.
 
 Comportamiento observado:
 
-- `mimatmul` crece aproximadamente como `n^3`: de ~0.0005 s en `n=10` a ~35 s en `n=400`
-  (al duplicar de 200 a 400, el tiempo se multiplica por ~8).
+- `mimatmul` crece aproximadamente como `n^3`: de ~0.0004 s en `n=10` a ~32 s en `n=400`
+  (al duplicar de 200 a 400, el tiempo se multiplica por ~9).
 - NumPy es mucho mas rapido en todo el rango: ~0.002 s en `n=400`, unas
-  ~17000 veces mas rapido en el tamano mayor.
-- Las repeticiones del mismo caso no son identicas (p. ej. `mimatmul` en `n=125`
-  vario entre ~0.95 y ~1.11 s) porque el tiempo depende de la planificacion del
+  ~16000 veces mas rapido en el tamano mayor.
+- Las repeticiones del mismo caso no son identicas (p. ej. `mimatmul` en `n=400`
+  vario entre ~30.7 y ~34.2 s) porque el tiempo depende de la planificacion del
   sistema operativo, el turbo del procesador y la actividad de fondo.
 
 ### Observacion de recursos
@@ -92,9 +96,13 @@ mientras corria cada metodo (n=150 para `mimatmul`, n=3000 para NumPy):
   varios hilos. Por eso es mas rapido: menos interpretacion, operaciones vectorizadas,
   mejor uso de cache y de todos los nucleos.
 - La memoria libre bajo ~1.4 GB durante la fase de NumPy (matrices de 3000x3000,
-  ~72 MB cada una). Con 15.78 GB de RAM, los tamanos del benchmark deben ser
-  pequenos: una matriz de `n=8000` ya ocupa ~512 MB y su producto otra mas, y
-  `mimatmul` escala como `n^3`, por lo que es muy facil agotar la memoria o
+  ~72 MB cada una). Para calcular el tamano maximo que cabria en la RAM libre
+  (~5.7 GB al recolectar los datos) hay que reservar espacio para A, B y el
+  resultado C: tres matrices de `n x n` en `float64` ocupan `24 * n^2` bytes.
+  Despejando `24 * n^2 = 5.7e9` da `n ~ 15400`, por lo que una matriz de
+  ~15000 x 15000 es aproximadamente el limite teorico. En la practica se
+  recomienda quedarse muy por debajo (p. ej. `n <= 3000`) para no agotar la
+  memoria del sistema, y `mimatmul` escala como `n^3`, por lo que es muy facil
   congelar el computador.
 - La GPU (GTX 1050) aparecio con 0% de uso durante el benchmark: tener una GPU no
   implica que el programa la use; NumPy ejecuta en CPU y solo bibliotecas como
@@ -113,8 +121,10 @@ Reflexion sobre el trabajo con el agente (revisar y completar a mano):
   y fue corregido para usar el nombre real del sistema operativo; la medicion de
   CPU del proceso no funcionaba con `Get-Counter`/`Get-Process` en este equipo y
   se reemplazo por `psutil`.
--**Archivo que mejor comprendo**: son los script de system_info.py, el mimatmul.py y el test_mimatmul.py
--**Archivo que peor comprendo**: es el benchmark.py
+- **Archivo que mejor comprendo**: `system_info.py`, `mimatmul.py` y
+  `test_mimatmul.py`, porque los repasamos linea por linea y su logica es directa.
+- **Archivo que peor comprendo**: `benchmark.py`, por los detalles de medicion
+  de tiempos, el guardado del CSV y el grafico en escala logaritmica.
 
 ## Estructura
 
