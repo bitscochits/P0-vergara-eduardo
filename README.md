@@ -20,14 +20,21 @@ Todo el codigo fue producido con el agente de programacion OpenCode y revisado p
 ## Instalacion
 
 Requisitos: Python 3.10, Git y una terminal (PowerShell en Windows).
+Las dependencias fijadas en `requirements.txt` requieren Python 3.10 (p. ej.
+`numpy==2.2.6` no tiene instaladores precompilados para versiones mas nuevas como
+3.14). Para listar las versiones de Python instaladas y ver cual es la 3.10:
+
+```powershell
+py -0p
+```
 
 ```powershell
 # 1. Clonar o descargar el repositorio
 git clone https://github.com/bitscochits/P0-vergara-eduardo.git
 cd P0-vergara-eduardo
 
-# 2. Crear el ambiente virtual
-python -m venv .venv
+# 2. Crear el ambiente virtual con Python 3.10
+py -3.10 -m venv .venv
 
 # 3. Activarlo
 .venv\Scripts\activate
