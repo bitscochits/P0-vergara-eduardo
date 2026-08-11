@@ -113,7 +113,8 @@ Reflexion sobre el trabajo con el agente (revisar y completar a mano):
   y fue corregido para usar el nombre real del sistema operativo; la medicion de
   CPU del proceso no funcionaba con `Get-Counter`/`Get-Process` en este equipo y
   se reemplazo por `psutil`.
-
+-**Archivo que mejor comprendo**: son los script de system_info.py, el mimatmul.py y el test_mimatmul.py
+-**Archivo que peor comprendo**: es el benchmark.py
 
 ## Estructura
 
